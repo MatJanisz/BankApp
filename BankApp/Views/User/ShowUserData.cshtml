@@ -1,0 +1,20 @@
+﻿@model BankApp.ViewModel.UserAccountViewModel
+@{
+    ViewBag.Title = "ShowUserData";
+    Layout = "~/Views/Shared/_LayoutLogIn.cshtml";
+}
+
+<h2>@Model.UserAccount.Surname @Model.UserAccount.Name</h2>
+<div id="UserData">
+    <ul>
+        <li>Account number: @Model.UserAccount.AccoutNumber</li>
+        <li>Money: @Model.UserAccount.Money</li>
+        <li>Date of birth: @Model.UserAccount.DateOfBirth</li>
+        <li>Account type: @Model.UserAccount.TypeAccount.Type</li>
+    </ul>
+</div>
+
+<br/><br /><br /><br /><br /><br /><br /><br /><br />
+@Styles.Render("~/Content/Site.css")
+
+

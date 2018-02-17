@@ -1,0 +1,40 @@
+﻿@model IEnumerable<BankApp.Models.UserAccount>
+
+@{
+    ViewBag.Title = "ShowUser";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>List of Bank Users</h2>
+
+<table class="table table-bordered table-hover">
+    <thead> <!--znacznik oznaczajacy naglowek tabeli-->
+        <tr><!--zaczyna wiersz tabeli-->
+            <th>Surname</th><!--poszczegolna komorka wiersza th odnosi sie do naglowka-->
+            <th>Name</th>
+            <th>DateOfBirth</th>
+            <th>Type account</th>
+            <th>AccountNumber</th>
+            <th>Money</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(item.Surname,"Edit","User",new { id = item.Id}, null)</td>
+                <td>@item.Name</td>
+                <td>@item.DateOfBirth</td>
+                <td>@item.TypeAccount.Type</td>
+                <td>@item.AccoutNumber</td>
+                <td>@item.Money</td>
+                <td>@Html.ActionLink( "Delete","Delete", "User", new { id = item.Id }, null)</td>
+            </tr>
+        }
+    </tbody>
+
+
+    
+</table>
+

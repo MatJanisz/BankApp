@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "StartPage";
+    if (User.Identity.Name.Equals("admin@admin.com"))
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    else if(User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_LayoutLogIn.cshtml";
+    }
+
+}
+
+<br/>
+<div id="BankAppString">
+    <h2>BankApp</h2>
+</div>
+
+<p id="initialInfo">
+    <br /><br />
+    <b><i>Please log in or register.</i></b> 
+
+    <br/><br/><br/>
+
+    <b>Remember!</b>
+    <br/>
+
+    <b><i>Bank never requires installations of any additional certificates/applications. 
+    in order to use web application</i></b>
+
+    <br/><br /><br />
+   
+    <b>Have a nice day :)</b>
+    <br/><br/><br/>
+</p>
+
+@Styles.Render("~/Content/Site.css")

@@ -1,0 +1,39 @@
+﻿@model BankApp.ViewModel.UserAccountViewModel
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New User</h2>
+
+@using (Html.BeginForm("Save", "User"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserAccount.Name)
+        @Html.TextBoxFor(m => m.UserAccount.Name, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.UserAccount.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserAccount.Surname)
+        @Html.TextBoxFor(m => m.UserAccount.Surname, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.UserAccount.Surname)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserAccount.Money)
+        @Html.TextBoxFor(m => m.UserAccount.Money, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.UserAccount.Money)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserAccount.DateOfBirth)
+        @Html.TextBoxFor(m => m.UserAccount.DateOfBirth,"{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.UserAccount.DateOfBirth)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserAccount.TypeAccountId)
+        @Html.DropDownListFor(m => m.UserAccount.TypeAccountId,new SelectList(Model.TypeAccounts,"Id","Type"),"Select Type Account", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.UserAccount.TypeAccount)
+    </div>
+    @Html.HiddenFor(c=>c.UserAccount.Id)
+    @Html.HiddenFor(c => c.UserAccount.RegisterId)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}

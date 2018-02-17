@@ -1,0 +1,31 @@
+﻿@model BankApp.Models.Transfer
+@{
+    ViewBag.Title = "StartTransfer";
+    Layout = "~/Views/Shared/_LayoutLogIn.cshtml";
+}
+
+<h2>StartTransfer</h2>
+
+@using (Html.BeginForm("MakeTransfer", "Transaction"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.NameOfTransaction)
+        @Html.TextBoxFor(m => m.NameOfTransaction, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.NameOfTransaction)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TargetAccountNumber)
+        @Html.TextBoxFor(m => m.TargetAccountNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.TargetAccountNumber)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.TransferMoney)
+        @Html.TextBoxFor(m => m.TransferMoney, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.TransferMoney)
+    </div>
+   
+    @Html.HiddenFor(c => c.UserId)
+    @Html.HiddenFor(c => c.DateTransfer)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Transfer</button>
+}
